@@ -103,11 +103,24 @@ for i in range(settings.generations+1):
     max_values_points.append(history.max_values[i])
     mean_values_points.append(history.mean_values[i])
 
-plt.scatter(x_points, minimal_values_points, label='Minimal Values', color='blue')
-plt.scatter(x_points, max_values_points, label='Max Values', color='green')
-plt.scatter(x_points, mean_values_points, label='Mean Values', color='red')
-plt.xlabel('X-axis')
-plt.ylabel('Y-axis')
-plt.legend()
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
+
+ax1.scatter(x_points, minimal_values_points, label='Minimal Values', color='blue')
+ax1.scatter(x_points, max_values_points, label='Max Values', color='green')
+ax1.scatter(x_points, mean_values_points, label='Mean Values', color='red')
+
+# Plot the second set of data (function) on the second subplot (ax2)
+x_function = np.linspace(settings.min_x, settings.max_x, 100)
+y_function = -0.4 * x_function**2 + 4 * x_function + 6
+ax2.plot(x_function, y_function, label='-0.4*x^2 + 4*x + 6', color='purple')
+
+ax2.set_xlabel('X-axis')
+ax2.set_ylabel('Y-axis (Function Plot)')
+ax2.legend(loc='upper right')
+
+ax1.set_xlabel('Generation')
+ax1.set_ylabel('Value')
+ax1.legend()
+plt.tight_layout()
 plt.savefig('my_plot.png')
 plt.show()
