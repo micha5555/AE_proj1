@@ -1,8 +1,10 @@
 {
 	"fitness_function": "-0.4*x**2 + 4*x + 6",
-	"population_size": 70,
-	"generations": 100,
+	"population_size": 10,
+	"generations": 20,
 	"mutation_probability": 0.001,
+	"crossover_probability": 0.9,
 	"min_x": -1,
 	"max_x": 21
 }
+
